@@ -1,13 +1,23 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState , useEffect }  from 'react'
 import DrawerNavigation from './src/drawer/DrawerNavigation';
+import Logo from './src/screens/Logo';
 
 export default function App() {
+  const [pgLogo, setPgLogo] = useState(true)
+  //const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    // Simula una carga de 2 segundos
+    setTimeout(() => {
+      setPgLogo(false);
+      //1000 es un segundo 
+    }, 5000);
+  }, []);
+  if (pgLogo){
+    return <Logo/>
+  }  
   return (
-    <NavigationContainer>
-      <DrawerNavigation/>
-    </NavigationContainer>
+    <DrawerNavigation/>
   )
+
 }
 
