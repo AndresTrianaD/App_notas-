@@ -1,6 +1,10 @@
 import React, { useState , useEffect }  from 'react'
-import DrawerNavigation from './src/drawer/DrawerNavigation';
-import Logo from './src/screens/Logo';
+import Logo from './src/screens/Logo'
+import ScreenNavigation from './src/navigation/ScreenNavigation'
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar'
+import Notas from './src/screens/Notas';
+
 
 export default function App() {
   const [pgLogo, setPgLogo] = useState(true)
@@ -10,14 +14,19 @@ export default function App() {
     setTimeout(() => {
       setPgLogo(false);
       //1000 es un segundo 
-    }, 5000);
+    }, 1000);
   }, []);
   if (pgLogo){
     return <Logo/>
   }  
   return (
-    <DrawerNavigation/>
+    <NavigationContainer>
+    <StatusBar backgroundColor="white" barStyle="dark-content"/>
+      <ScreenNavigation/>
+      </NavigationContainer>
   )
 
 }
 
+// <ScreenNavigation/>
+//   <Notas/>
